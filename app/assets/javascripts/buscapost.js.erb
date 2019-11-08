@@ -1,0 +1,21 @@
+$(document).on('ready turbolinks:load', function(){
+    $("input[name='q']").keyup(function(){
+        var q = $(this).val()
+        if(q.length > 2){
+            $.ajax({
+                type: 'get',
+                url: '/posts',
+                data: { q: q},
+                dataType: 'script'
+            });
+        }
+        // Liberar
+        if(q.length == 2){
+            $.ajax({
+                type: 'get',
+                url: '/posts',
+                dataType: 'script'
+            });
+        }
+    });
+});
